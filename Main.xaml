@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="616,3546" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="612,3546" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
@@ -113,15 +113,9 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download the attachments in the unread mail messages" sap:VirtualizedContainerService.HintSize="455.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Mails_modules\Outlook_DownloadAttachments.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_mailMessages">
-          <mva:VisualBasicValue x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessages" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_mailSubject">
-          <Literal x:TypeArguments="x:String">Techno Computers</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_downloadsFolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachmentsFolderPath" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_mailMessages">[mailMessages]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_mailSubject">Techno Computers</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_downloadsFolderPath">[strAttachmentsFolderPath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:ForEachFileX DisplayName="For Each PDF Invoice in the Folder" Filter="*.pdf" Folder="[strAttachmentsFolderPath]" sap:VirtualizedContainerService.HintSize="455.333333333333,2927.33333333333" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="True">
@@ -273,10 +267,18 @@
             </Assign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send me the output Excel sheet as an attachmen" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Mails_modules\Outlook_SendMail.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strTo">mohamed.aboatta@vodafone.com.eg</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">[strMailSubject]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strBody">This email is part of a project in the Udacity Nanodegree: RPA Developer With UiPath. The attachment is a demo invoice provided by Udacity specifically for this project as well.</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentPath">[strOutputExcelPath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strTo">
+                  <Literal x:TypeArguments="x:String">muhammadabdelgawwad@gmail.com</Literal>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strSubject">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strMailSubject" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strBody">
+                  <Literal x:TypeArguments="x:String">This email is part of a project in the Udacity Nanodegree: RPA Developer With UiPath. The attachment is a demo invoice provided by Udacity specifically for this project as well.</Literal>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentPath">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strOutputExcelPath" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[String.Format(&quot;Finished processing invoice = {0}&quot;, invoicePDF.Name)]" />
