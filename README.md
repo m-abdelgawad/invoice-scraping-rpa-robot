@@ -3,6 +3,12 @@
 ## Project Overview
 In this project, I have developed an automation for a process that will scrape relevant data from invoices for further processing. The Robot will read through emails and download the invoices received in the form of an email attachment as a PDF. It will extract specific data and store those values in an Excel spreadsheet and a subset of values will be uploaded to the Orchestrator Queue. And finally, the robot will email the spreadsheet to me.
 
+## Certification
+
+This project was a milestone in my journey to study the RPA Developer With UiPath Nanodegree provided by Udacity.
+
+[![RPA Developer With UiPath Nanodegree by Udacity](readme_imgs/RPA-Developer-With-UiPath-Nanodegree.png)](https://confirm.udacity.com/JVFFYTKPJ "RPA Developer With UiPath Nanodegree by Udacity")
+
 ## Workflows Screenshots
 
 ### Main Workflow
