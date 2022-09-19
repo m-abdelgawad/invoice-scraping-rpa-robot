@@ -25,7 +25,7 @@ This project was a milestone in my journey to study the RPA Developer With UiPat
 
 ### Generic_CreateFolderIfNotExists Workflow
 <img src="readme_imgs/Generic_CreateFolderIfNotExists.jpg">
-
+ 
 ### Generic_ExtractRegexDataTable Workflow
 <img src="readme_imgs/Generic_ExtractRegexDataTable.jpg">
 
